@@ -15,6 +15,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">{{ _('nav_home') }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('main.forum') }}">{{ _('nav_forum') }}</a></li>
                     {% if current_user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('main.collection') }}">{{ _('nav_collection') }}</a></li>
                     {% endif %}
