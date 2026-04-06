@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mt-4">
+    <div class="col-12">
+        <h2 class="retro-font text-info">{{ thread_title | default('HILO DEL FORO (Ejemplo)') }}</h2>
+        <a href="{{ url_for('main.index') }}" class="btn btn-sm btn-outline-secondary mb-3">&lt; Volver al Foro</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-gaming mb-3 border-secondary">
+            <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+                <span class="text-uppercase text-warning retro-font">Usuario: Jugador1</span>
+                <small class="text-muted">Ayer, 23:45</small>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-light">Este es un mensaje de ejemplo dentro del hilo del foro. ¡Los videojuegos clásicos nunca mueren!</p>
+            </div>
+        </div>
+
+        {% if current_user.is_authenticated %}
+            <div class="card card-gaming mt-4 border-info">
+                <div class="card-header text-info retro-font">RESPONDER AL HILO</div>
+                <div class="card-body">
+                    <form method="POST" action="#">
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-retro">ENVIAR RESPUESTA</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-dark text-center mt-4">
+                <a href="{{ url_for('auth.login') }}" class="text-info">Inicia sesión</a> para responder a este tema.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

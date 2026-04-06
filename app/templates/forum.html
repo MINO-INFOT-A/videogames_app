@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mt-4">
+    <div class="col-12 d-flex justify-content-between align-items-center mb-3">
+        <h2 class="retro-font text-info">{{ _('nav_forum') }}</h2>
+        {% if current_user.is_authenticated %}
+            <button class="btn btn-sm btn-retro" data-bs-toggle="collapse" data-bs-target="#newThreadForm">+ NUEVO TEMA RACIZ</button>
+        {% endif %}
+    </div>
+</div>
+
+<div class="collapse mb-4" id="newThreadForm">
+    <div class="card card-gaming border-info">
+        <div class="card-body">
+            <form method="POST" action="#">
+                <div class="mb-3">
+                    <label class="form-label text-info">Título del Hilo</label>
+                    <input type="text" name="title" class="form-control" required placeholder="Ej. ¿Alguien sigue jugando Doom clásico?">
+                </div>
+                <button type="submit" class="btn btn-outline-info w-100">INILIAR TEMA</button>
+            </form>
+            <p class="text-muted mt-2 small">Nota: Por brevedad, la lógica subyacente para el POST del foro estaría en routes.py</p>
+        </div>
+    </div>
+</div>
+
+<div class="card card-gaming p-0">
+    <div class="list-group list-group-flush">
+        <!-- Ejemplo de Foros Placeholder -->
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-light border-secondary">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 text-info retro-font">RETRO-PC TAVERN</h5>
+                <small class="text-muted">Hoy, 10:20</small>
+            </div>
+            <p class="mb-1 text-secondary">Discusiones sobre DOSBox, ScummVM y reliquias de los 90s.</p>
+            <small class="text-muted text-uppercase">Temas: 124 - Creado por Admin</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-transparent text-light border-secondary">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 text-warning retro-font">CONSOLE WARS ARCIVE</h5>
+                <small class="text-muted">Ayer</small>
+            </div>
+            <p class="mb-1 text-secondary">Archivo histórico de los viejos foros. Debate sobre SNES vs Genesis.</p>
+            <small class="text-muted text-uppercase">Temas: 342 - Creado por Moderador</small>
+        </a>
+    </div>
+</div>
+{% endblock %}

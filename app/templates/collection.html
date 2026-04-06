@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mt-4">
+    <div class="col-12 text-center mb-4">
+        <h1 class="retro-font text-uppercase" style="color: var(--acc-cyan)">{{ _('collection_title') }}</h1>
+        <hr class="border-secondary">
+    </div>
+</div>
+
+<div class="row">
+    <!-- Formulario para agregar juegos -->
+    <div class="col-md-4 mb-4">
+        <div class="card card-gaming p-3 border-info">
+            <h4 class="retro-font text-info mb-3">Agregar/Registrar Juego</h4>
+            <form method="POST" action="{{ url_for('main.collection') }}">
+                <div class="mb-3">
+                    <label class="form-label text-muted small">Título del Juego</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">Plataforma</label>
+                    <select name="platform" class="form-control bg-dark text-light border-secondary">
+                        <option value="PC">PC / DOS / Windows</option>
+                        <option value="NES">Nintendo (NES)</option>
+                        <option value="SNES">Super Nintendo</option>
+                        <option value="Sega Genesis">Sega Genesis/MegaDrive</option>
+                        <option value="PS1">PlayStation 1</option>
+                        <option value="PS2">PlayStation 2</option>
+                        <option value="Otros">Otras Consolas</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">Estado</label>
+                    <select name="status" class="form-control bg-dark text-light border-secondary">
+                        <option value="Jugando">Jugando / Activo</option>
+                        <option value="Completado">Completado</option>
+                        <option value="Abandonado">Abandonado</option>
+                        <option value="Deseado">Lista de Deseos</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-retro w-100">+ GUARDAR EN LA BÓVEDA</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lista de juegos del usuario -->
+    <div class="col-md-8">
+        <div class="card card-gaming">
+            <div class="card-header bg-transparent border-secondary text-info retro-font">
+                INVENTARIO REGISTRADO
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-borderless mb-0">
+                        <thead style="border-bottom: 2px solid var(--acc-magenta)">
+                            <tr>
+                                <th>Juego</th>
+                                <th>Sistema / Plataforma</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr style="border-bottom: 1px solid #333;">
+                                <td class="text-light">{{ item.game_title }}</td>
+                                <td class="text-secondary">{{ item.platform }}</td>
+                                <td>
+                                    {% if item.status == 'Completado' %}
+                                        <span class="badge bg-success text-dark">Completado</span>
+                                    {% elif item.status == 'Jugando' %}
+                                        <span class="badge bg-warning text-dark">Jugando</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ item.status }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="3" class="text-center text-muted py-4">No has registrado ningún juego todavía en tu bóveda.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

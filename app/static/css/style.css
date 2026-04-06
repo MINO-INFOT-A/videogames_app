@@ -1,0 +1,65 @@
+:root {
+    --bg-dark: #0f0f13;
+    --acc-cyan: #00f3ff;
+    --acc-magenta: #ff00ea;
+    --text-main: #e0e0e0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estética Retro Gaming / Dark Impactful */
+h1, h2, h3, .retro-font {
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px var(--acc-magenta);
+}
+
+.navbar {
+    background-color: #1a1a24 !important;
+    border-bottom: 2px solid var(--acc-cyan);
+}
+
+.navbar-brand {
+    color: var(--acc-cyan) !important;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-retro {
+    background: transparent;
+    color: var(--acc-cyan);
+    border: 2px solid var(--acc-cyan);
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-retro:hover {
+    background: var(--acc-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--acc-cyan);
+}
+
+.card-gaming {
+    background: #1e1e28;
+    border: 1px solid #333;
+    border-radius: 0; /* Bordes duros tipo pixel */
+}
+
+/* Glowing inputs */
+.form-control {
+    background: #2a2a36;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 0;
+}
+.form-control:focus {
+    background: #2a2a36;
+    color: white;
+    box-shadow: 0 0 8px var(--acc-magenta);
+    border-color: var(--acc-magenta);
+}
