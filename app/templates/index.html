@@ -2,17 +2,17 @@
 {% block content %}
 <div class="row">
     <div class="col-md-8 mx-auto text-center mt-5">
-        <h1 class="retro-font mb-4 text-uppercase">{{ _('news_title') }}</h1>
-        <hr class="border-secondary">
+        <h1 class="modern-font mb-4 text-uppercase">{{ _('news_title') }}</h1>
+        <hr style="border-color: var(--border-color);">
     </div>
 </div>
 
 <div class="row mt-4">
     <div class="col-md-8 mx-auto">
         {% for item in news %}
-            <div class="card card-gaming mb-4">
+            <div class="card card-premium mb-4">
                 <div class="card-body">
-                    <h3 class="card-title text-info retro-font">{{ item.title }}</h3>
+                    <h3 class="card-title text-primary-accent modern-font">{{ item.title }}</h3>
                     <p class="text-muted small">Publicado: {{ item.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
                     <p class="card-text">{{ item.content }}</p>
                 </div>

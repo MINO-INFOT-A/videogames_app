@@ -2,17 +2,17 @@
 {% block content %}
 <div class="row mt-4">
     <div class="col-12">
-        <h2 class="retro-font text-info">{{ thread.title }}</h2>
-        <a href="{{ url_for('main.forum') }}" class="btn btn-sm btn-outline-secondary mb-3">&lt; Volver al Foro</a>
+        <h2 class="modern-font text-primary-accent">{{ thread.title }}</h2>
+        <a href="{{ url_for('main.forum') }}" class="btn btn-sm btn-outline-modern mb-3">&lt; Volver al Foro</a>
     </div>
 </div>
 
 <div class="row">
     <div class="col-12">
         {% for post in thread.posts %}
-        <div class="card card-gaming mb-3 border-secondary">
-            <div class="card-header bg-dark d-flex justify-content-between align-items-center">
-                <span class="text-uppercase text-warning retro-font">Usuario: {{ post.author.username }}</span>
+        <div class="card card-premium mb-3 border-0">
+            <div class="card-header bg-transparent border-color d-flex justify-content-between align-items-center">
+                <span class="text-uppercase text-primary-accent modern-font">Usuario: {{ post.author.username }}</span>
                 <small class="text-muted">{{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
             </div>
             <div class="card-body">
@@ -24,20 +24,20 @@
         {% endfor %}
 
         {% if current_user.is_authenticated %}
-            <div class="card card-gaming mt-4 border-info">
-                <div class="card-header text-info retro-font">RESPONDER AL HILO</div>
+            <div class="card card-premium mt-4 border-0">
+                <div class="card-header bg-transparent text-primary-accent modern-font">RESPONDER AL HILO</div>
                 <div class="card-body">
                     <form method="POST" action="{{ url_for('main.thread', thread_id=thread.id) }}">
                         <div class="mb-3">
                             <textarea class="form-control" name="content" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-retro">ENVIAR RESPUESTA</button>
+                        <button type="submit" class="btn btn-modern">ENVIAR RESPUESTA</button>
                     </form>
                 </div>
             </div>
         {% else %}
             <div class="alert alert-dark text-center mt-4">
-                <a href="{{ url_for('auth.login') }}" class="text-info">Inicia sesión</a> para responder a este tema.
+                <a href="{{ url_for('auth.login') }}" class="text-primary-accent">Inicia sesión</a> para responder a este tema.
             </div>
         {% endif %}
     </div>

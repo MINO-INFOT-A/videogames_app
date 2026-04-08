@@ -2,8 +2,8 @@
 {% block content %}
 <div class="row mt-5">
     <div class="col-md-6 col-lg-4 mx-auto">
-        <div class="card card-gaming p-4 text-center">
-            <h2 class="retro-font mb-4 text-warning">VERIFICACIÓN 2FA</h2>
+        <div class="card card-premium p-4 text-center border-0">
+            <h2 class="modern-font mb-4 text-primary-accent">VERIFICACIÓN 2FA</h2>
             <p class="text-muted small">Por favor ignresa el código TOTP generado por tu aplicación autenticadora de seguridad.</p>
             
             {% with messages = get_flashed_messages() %}
@@ -16,9 +16,9 @@
 
             <form method="POST" action="{{ url_for('auth.verify_2fa') }}">
                 <div class="mb-3">
-                    <input type="text" name="token" class="form-control text-center text-warning retro-font" style="font-size: 1.5rem; letter-spacing: 5px;" maxlength="6" required autofocus autocomplete="off" placeholder="000000">
+                    <input type="text" name="token" class="form-control text-center text-primary-accent modern-font" style="font-size: 1.5rem; letter-spacing: 5px;" maxlength="6" required autofocus autocomplete="off" placeholder="000000">
                 </div>
-                <button type="submit" class="btn btn-retro w-100">VERIFICAR ACCESO</button>
+                <button type="submit" class="btn btn-modern w-100">VERIFICAR ACCESO</button>
             </form>
         </div>
     </div>

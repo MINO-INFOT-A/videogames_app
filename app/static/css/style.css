@@ -1,65 +1,172 @@
 :root {
-    --bg-dark: #0f0f13;
-    --acc-cyan: #00f3ff;
-    --acc-magenta: #ff00ea;
-    --text-main: #e0e0e0;
+    /* Sleek Dark Theme Colors */
+    --bg-main: #0c0c0f; /* Deep almost-black asphalt */
+    --bg-surface: #16161a; /* Sleek cards background */
+    --bg-surface-hover: #1f1f25;
+    --text-main: #f8f8f8;
+    --text-muted: #9494a0;
+    --acc-primary: #6366f1; /* Modern Indigo */
+    --acc-primary-hover: #4f46e5;
+    --border-color: #27272f;
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-main);
     color: var(--text-main);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.01em;
 }
 
-/* Estética Retro Gaming / Dark Impactful */
-h1, h2, h3, .retro-font {
-    font-family: 'Courier New', Courier, monospace;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 0px var(--acc-magenta);
+/* Typography Modernization */
+h1, h2, h3, h4, h5, h6, .modern-font {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
 }
 
+.text-primary-accent {
+    color: var(--acc-primary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Navbar Soft Glassmorphism */
 .navbar {
-    background-color: #1a1a24 !important;
-    border-bottom: 2px solid var(--acc-cyan);
-}
-
-.navbar-brand {
-    color: var(--acc-cyan) !important;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.btn-retro {
-    background: transparent;
-    color: var(--acc-cyan);
-    border: 2px solid var(--acc-cyan);
-    text-transform: uppercase;
-    font-weight: bold;
+    background-color: rgba(12, 12, 15, 0.75) !important; 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
     transition: all 0.3s ease;
 }
 
-.btn-retro:hover {
-    background: var(--acc-cyan);
-    color: var(--bg-dark);
-    box-shadow: 0 0 10px var(--acc-cyan);
+.navbar-brand {
+    color: var(--text-main) !important;
+    font-weight: 800;
+    letter-spacing: 0px;
+    font-size: 1.4rem;
 }
 
-.card-gaming {
-    background: #1e1e28;
-    border: 1px solid #333;
-    border-radius: 0; /* Bordes duros tipo pixel */
+.nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    padding: 0.5rem 1rem !important;
 }
 
-/* Glowing inputs */
+.nav-link:hover {
+    color: var(--text-main) !important;
+}
+
+/* Buttons */
+.btn-modern {
+    background: var(--acc-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    text-decoration: none;
+}
+
+.btn-modern:hover {
+    background: var(--acc-primary-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+}
+
+.btn-outline-modern {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.btn-outline-modern:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Premium Dynamic Cards */
+.card-premium {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.card-premium:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card-premium .card-body {
+    padding: 2.5rem;
+}
+
+/* Forms and Inputs */
 .form-control {
-    background: #2a2a36;
-    color: white;
-    border: 1px solid #555;
-    border-radius: 0;
+    background: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
 }
+
 .form-control:focus {
-    background: #2a2a36;
-    color: white;
-    box-shadow: 0 0 8px var(--acc-magenta);
-    border-color: var(--acc-magenta);
+    background: var(--bg-main) !important;
+    border-color: var(--acc-primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15) !important;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Lists and interactables */
+.list-group-item {
+    background: var(--bg-surface);
+    border-color: var(--border-color);
+    color: var(--text-main);
+    padding: 1.25rem 1.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item-action:hover {
+    background: var(--bg-surface-hover);
+    color: var(--text-main);
+}
+
+/* Container Utilities */
+.spacious-container {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
 }

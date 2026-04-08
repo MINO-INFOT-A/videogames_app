@@ -2,8 +2,8 @@
 {% block content %}
 <div class="row mt-5">
     <div class="col-md-6 col-lg-4 mx-auto">
-        <div class="card card-gaming p-4">
-            <h2 class="text-center retro-font mb-4 text-info">{{ _('nav_login') }}</h2>
+        <div class="card card-premium p-4 border-0">
+            <h2 class="text-center modern-font mb-4 text-primary-accent">{{ _('nav_login') }}</h2>
 
             {% with messages = get_flashed_messages() %}
               {% if messages %}
@@ -15,18 +15,18 @@
 
             <form method="POST" action="{{ url_for('auth.login') }}">
                 <div class="mb-3">
-                    <label class="form-label text-uppercase small font-weight-bold retro-font">Usuario</label>
+                    <label class="form-label text-uppercase small font-weight-bold">Usuario</label>
                     <input type="text" name="username" class="form-control" required autofocus>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label text-uppercase small font-weight-bold retro-font">Contraseña</label>
+                    <label class="form-label text-uppercase small font-weight-bold">Contraseña</label>
                     <input type="password" name="password" class="form-control" required>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="remember" name="remember">
                     <label class="form-check-label text-muted small" for="remember">Recordarme</label>
                 </div>
-                <button type="submit" class="btn btn-retro w-100">ACCEDER [ENTRAR]</button>
+                <button type="submit" class="btn btn-modern w-100">ACCEDER</button>
             </form>
             <div class="text-center mt-3">
                 <a href="{{ url_for('auth.register') }}" class="text-muted small">¿No tienes cuenta? Regístrate aquí.</a>

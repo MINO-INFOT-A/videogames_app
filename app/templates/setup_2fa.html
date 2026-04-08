@@ -2,13 +2,13 @@
 {% block content %}
 <div class="row mt-5">
     <div class="col-md-6 col-lg-5 mx-auto">
-        <div class="card card-gaming p-4 text-center">
-            <h2 class="retro-font mb-4" style="color: var(--acc-magenta)">CONFIGURAR 2FA</h2>
+        <div class="card card-premium p-4 text-center border-0">
+            <h2 class="modern-font mb-4 text-primary-accent">CONFIGURAR 2FA</h2>
             <p class="text-muted small">Para garantizar la máxima seguridad fuera de línea, es OBLIGATORIO configurar la autenticación de dos pasos.</p>
             
-            <div class="bg-dark p-3 my-4 border border-secondary" style="border-radius: 5px;">
+            <div class="bg-transparent p-3 my-4 border" style="border-color: var(--border-color) !important; border-radius: 8px;">
                 <p class="mb-2">1. Añade esta semilla a tu aplicación TOTP (Ej. Google Authenticator, Authy):</p>
-                <h4 class="retro-font text-info text-break bg-black p-2" tabindex="0">{{ secret }}</h4>
+                <h4 class="modern-font text-primary-accent text-break p-2" tabindex="0" style="background: rgba(255,255,255,0.05); border-radius: 6px;">{{ secret }}</h4>
             </div>
 
             {% with messages = get_flashed_messages() %}
@@ -21,10 +21,10 @@
 
             <form method="POST" action="{{ url_for('auth.setup_2fa') }}">
                 <div class="mb-3">
-                    <label class="form-label text-uppercase small font-weight-bold retro-font">Introduce el código generado:</label>
-                    <input type="text" name="token" class="form-control text-center text-info retro-font" style="font-size: 1.5rem; letter-spacing: 5px;" maxlength="6" required autofocus autocomplete="off">
+                    <label class="form-label text-uppercase small font-weight-bold">Introduce el código generado:</label>
+                    <input type="text" name="token" class="form-control text-center text-primary-accent modern-font" style="font-size: 1.5rem; letter-spacing: 5px;" maxlength="6" required autofocus autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-retro w-100">VERIFICAR Y GUARDAR ACTIVACIÓN</button>
+                <button type="submit" class="btn btn-modern w-100">VERIFICAR Y GUARDAR ACTIVACIÓN</button>
             </form>
         </div>
     </div>
