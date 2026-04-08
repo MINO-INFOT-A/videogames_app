@@ -1,172 +1,266 @@
+@import url('fonts.css');
+
 :root {
-    /* Sleek Dark Theme Colors */
-    --bg-main: #0c0c0f; /* Deep almost-black asphalt */
-    --bg-surface: #16161a; /* Sleek cards background */
-    --bg-surface-hover: #1f1f25;
-    --text-main: #f8f8f8;
-    --text-muted: #9494a0;
-    --acc-primary: #6366f1; /* Modern Indigo */
-    --acc-primary-hover: #4f46e5;
-    --border-color: #27272f;
+    --bg-dark: #000000;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card-hover: rgba(255, 255, 255, 0.06);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(0, 210, 255, 0.3);
+    --text-main: #ededed;
+    --text-muted: #888888;
+    --acc-ice: #00d2ff;
+    --acc-hover: #00b0d6;
+    --glow-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
 }
 
 body {
-    background-color: var(--bg-main);
+    background-color: var(--bg-dark);
     color: var(--text-main);
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: 0.01em;
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Blobs for Visual Aesthetics */
+.blob-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    animation: float 20s infinite ease-in-out alternate;
+}
+
+.blob-1 {
+    top: -10%;
+    left: 20%;
+    width: 50vw;
+    height: 50vw;
+    background: var(--acc-ice);
+}
+
+.blob-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: #4a00e0;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(10vw, 5vh) scale(1.1); }
 }
 
 /* Typography Modernization */
 h1, h2, h3, h4, h5, h6, .modern-font {
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #ffffff;
 }
 
 .text-primary-accent {
-    color: var(--acc-primary) !important;
+    background: linear-gradient(135deg, #ffffff 0%, var(--acc-ice) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .text-muted {
     color: var(--text-muted) !important;
 }
 
-/* Navbar Soft Glassmorphism */
-.navbar {
-    background-color: rgba(12, 12, 15, 0.75) !important; 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1.2rem;
-    padding-bottom: 1.2rem;
-    transition: all 0.3s ease;
+/* Floating Pill Navbar */
+.navbar-floating {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
-.navbar-brand {
-    color: var(--text-main) !important;
-    font-weight: 800;
-    letter-spacing: 0px;
-    font-size: 1.4rem;
+@media (max-width: 768px) {
+    .navbar-floating {
+        bottom: 1rem;
+        width: 90%;
+        justify-content: space-between;
+    }
 }
 
-.nav-link {
-    color: var(--text-muted) !important;
-    font-weight: 500;
-    transition: color 0.2s ease;
-    padding: 0.5rem 1rem !important;
-}
-
-.nav-link:hover {
-    color: var(--text-main) !important;
-}
-
-/* Buttons */
-.btn-modern {
-    background: var(--acc-primary);
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    padding: 0.6rem 1.5rem;
-    font-weight: 500;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+.nav-pill {
+    color: var(--text-muted);
     text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-pill:hover, .nav-pill.active {
+    color: #ffffff;
+    background: var(--bg-card-hover);
+}
+
+/* Buttons Next-Gen */
+.btn-modern {
+    background: var(--text-main);
+    color: #000;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .btn-modern:hover {
-    background: var(--acc-primary-hover);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+    background: #ffffff;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .btn-outline-modern {
-    background: transparent;
+    background: rgba(255,255,255,0.02);
     color: var(--text-main);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
+    display: inline-block;
 }
 
 .btn-outline-modern:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-card-hover);
     color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--acc-ice);
+    box-shadow: inset 0 0 20px rgba(0, 210, 255, 0.05);
 }
 
-/* Premium Dynamic Cards */
+/* Vercel-Style Cards */
 .card-premium {
-    background: var(--bg-surface);
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .card-premium:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    border-color: var(--border-highlight);
+    box-shadow: var(--glow-shadow), 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card-premium:hover::before {
+    opacity: 1;
 }
 
 .card-premium .card-body {
     padding: 2.5rem;
+    background: transparent;
 }
 
-/* Forms and Inputs */
+/* Modern Forms */
 .form-control {
-    background: var(--bg-main) !important;
-    color: var(--text-main) !important;
+    background: rgba(0,0,0,0.5) !important;
+    color: #fff !important;
     border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 0.8rem 1.2rem;
     font-size: 1rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .form-control:focus {
-    background: var(--bg-main) !important;
-    border-color: var(--acc-primary);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15) !important;
+    border-color: var(--acc-ice);
+    box-shadow: 0 0 0 1px var(--acc-ice), var(--glow-shadow) !important;
     outline: none;
 }
 
 .form-control::placeholder {
-    color: var(--text-muted);
+    color: #555;
 }
 
 .form-label {
     font-weight: 500;
     color: var(--text-muted);
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-/* Lists and interactables */
+/* Clean List Groups */
 .list-group-item {
-    background: var(--bg-surface);
-    border-color: var(--border-color);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
     color: var(--text-main);
-    padding: 1.25rem 1.5rem;
-    transition: background-color 0.2s ease;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border-radius: 16px !important;
+    margin-bottom: 0.5rem;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
 }
 
 .list-group-item-action:hover {
-    background: var(--bg-surface-hover);
-    color: var(--text-main);
+    background: var(--bg-card-hover);
+    transform: scale(1.01);
 }
 
-/* Container Utilities */
-.spacious-container {
-    padding-top: 3rem;
-    padding-bottom: 4rem;
+/* Base Spacing for the new layout (nav is floating) */
+.main-wrapper {
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
