@@ -15,24 +15,36 @@
         <div class="blob blob-2"></div>
     </div>
 
-    <!-- Floating Pill Navigation (Next-Gen) -->
-    <nav class="navbar-floating">
-        <a class="nav-pill" href="{{ url_for('main.index') }}" style="font-weight: 800; color: #fff;">NX</a>
-        <a class="nav-pill" href="{{ url_for('main.forum') }}">{{ _('nav_forum') }}</a>
-        {% if current_user.is_authenticated %}
-            <a class="nav-pill" href="{{ url_for('main.collection') }}">{{ _('nav_collection') }}</a>
-        {% endif %}
-        
-        <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2); margin: 0 0.5rem;"></div>
-
-        <a href="{{ url_for('main.set_lang', lang='es') }}" class="nav-pill" style="padding: 0.6rem 0.6rem;">ES</a>
-        <a href="{{ url_for('main.set_lang', lang='en') }}" class="nav-pill" style="padding: 0.6rem 0.6rem;">EN</a>
-        
-        {% if current_user.is_authenticated %}
-            <a href="{{ url_for('auth.logout') }}" class="nav-pill" style="color: rgba(255,100,100,0.8);">{{ _('nav_logout') }}</a>
-        {% else %}
-            <a href="{{ url_for('auth.login') }}" class="nav-pill" style="color: var(--acc-ice);">{{ _('nav_login') }}</a>
-        {% endif %}
+    <!-- Top Fixed Navigation (Modern) -->
+    <nav class="navbar navbar-expand-lg navbar-top">
+        <div class="container">
+            <a class="navbar-brand nav-brand-text" href="{{ url_for('main.index') }}">RETRO<span style="color: var(--acc-ice);">NEXUS</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link nav-pill" href="{{ url_for('main.forum') }}">{{ _('nav_forum') }}</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link nav-pill" href="{{ url_for('main.collection') }}">{{ _('nav_collection') }}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="{{ url_for('main.set_lang', lang='es') }}" class="nav-pill" style="padding: 0.6rem 0.6rem;">ES</a>
+                    <a href="{{ url_for('main.set_lang', lang='en') }}" class="nav-pill" style="padding: 0.6rem 0.6rem;">EN</a>
+                    <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.2);"></div>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('auth.logout') }}" class="btn-outline-modern btn-sm" style="color: rgba(255,100,100,0.8); border-color: rgba(255,100,100,0.3);">{{ _('nav_logout') }}</a>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="btn-modern btn-sm">{{ _('nav_login') }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Content Area -->
